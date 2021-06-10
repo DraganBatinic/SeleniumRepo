@@ -34,6 +34,21 @@ public class RegistrationTests extends BaseTests{
 		authenticationPage.createAnAccountButtonClick();
 		Thread.sleep(3000);
 		
+		String actualText = createAnAccountPage.createAnAccountHeadingText();
+		String textForAssertion = "CREATE AN ACCOUNT";
+		
+		assertEquals(actualText, textForAssertion);
+		
+	}
+	
+	@Test (priority = 3)
+	public void registrationWithInvalidEmail() throws InterruptedException {
+		this.signInButtonTest();		
+		String username = excelReader.getStringData("TCReg3", 8, 2);
+		authenticationPage.enterEmailAddress(username);
+		authenticationPage.createAnAccountButtonClick();
+		Thread.sleep(3000);
+		
 		String actualText = authenticationPage.creataAccountErrorMessageText();
 		String textForAssertion = "Invalid email address.";
 		
@@ -43,22 +58,10 @@ public class RegistrationTests extends BaseTests{
 		
 		this.signInButtonTest();			
 		authenticationPage.createAnAccountButtonClick();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		
 		actualText = authenticationPage.creataAccountErrorMessageText();
 		textForAssertion = "Invalid email address.";
-		
-		assertEquals(actualText, textForAssertion);
-		
-		driver.navigate().refresh();
-		
-		username = excelReader.getStringData("TCReg2", 13, 2);
-		authenticationPage.enterEmailAddress(username);
-		authenticationPage.createAnAccountButtonClick();
-		Thread.sleep(3000);
-		
-		actualText = createAnAccountPage.createAnAccountHeadingText();
-		textForAssertion = "CREATE AN ACCOUNT";
 		
 		assertEquals(actualText, textForAssertion);
 		
