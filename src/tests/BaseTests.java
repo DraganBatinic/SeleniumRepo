@@ -9,12 +9,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import pages.AuthenticationPage;
+import pages.CreateAnAccountPage;
 import pages.MainPage;
 
 public class BaseTests {
 	WebDriver driver;
 	MainPage mainPage;
 	AuthenticationPage authenticationPage;
+	CreateAnAccountPage createAnAccountPage;
 	ExcelReader excelReader;
 	String homeUrl;
 	
@@ -26,6 +28,7 @@ public class BaseTests {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		mainPage = new MainPage(driver);
 		authenticationPage = new AuthenticationPage(driver);
+		createAnAccountPage = new CreateAnAccountPage(driver);
 		excelReader = new ExcelReader("data/ProjekatData.xlsx");
 		homeUrl = "http://automationpractice.com/";
 				
