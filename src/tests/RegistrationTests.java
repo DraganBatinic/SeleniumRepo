@@ -41,7 +41,18 @@ public class RegistrationTests extends BaseTests{
 		
 		driver.navigate().refresh();
 		
-		username = excelReader.getStringData("TCReg2", 11, 2);
+		this.signInButtonTest();			
+		authenticationPage.createAnAccountButtonClick();
+		Thread.sleep(3000);
+		
+		actualText = authenticationPage.creataAccountErrorMessageText();
+		textForAssertion = "Invalid email address.";
+		
+		assertEquals(actualText, textForAssertion);
+		
+		driver.navigate().refresh();
+		
+		username = excelReader.getStringData("TCReg2", 13, 2);
 		authenticationPage.enterEmailAddress(username);
 		authenticationPage.createAnAccountButtonClick();
 		Thread.sleep(3000);
