@@ -7,8 +7,8 @@
         <methods>
           <include name="afterAllTests"/>
           <include name="registrationWithValidEmail"/>
-          <include name="posleSvakogTesta"/>
-          <include name="preSvakogTesta"/>
+          <include name="afterEveryTest"/>
+          <include name="beforeEveryTest"/>
           <include name="beforeAllTests"/>
         </methods>
       </class> <!-- tests.RegistrationTests -->

@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AuthenticationPage {
 	WebDriver driver;
@@ -10,10 +12,12 @@ public class AuthenticationPage {
 	WebElement emailAddressField;
 	WebElement createAnAccountButton;
 	WebElement createAccountErrorMessage;
+	WebDriverWait wdwait;
 	
 	public AuthenticationPage(WebDriver driver) {
 		super();
 		this.driver = driver;
+		wdwait = new WebDriverWait(driver, 30);
 	}
 
 	public WebElement getAuthenticationHeading() {
@@ -44,7 +48,9 @@ public class AuthenticationPage {
 		this.getCreateAnAccountButton().click();
 	}
 	
-	public String creataAccountErrorMessageText() {
+	public String createAnAccountErrorMessageText() {
+		WebElement errorMessage = getCreateAccountErrorMessage();
+		Boolean textIsVisible = wdwait.until(ExpectedConditions.textToBePresentInElement(errorMessage, "Invalid email address."));
 		return this.getCreateAccountErrorMessage().getText();
 	}
 
