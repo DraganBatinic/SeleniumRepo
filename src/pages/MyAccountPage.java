@@ -8,6 +8,7 @@ public class MyAccountPage {
 	WebDriver driver;
 	WebElement myAccountHeading;
 	WebElement signOutButton;
+	WebElement myAddressesTab;
 	
 	public MyAccountPage(WebDriver driver) {
 		super();
@@ -22,12 +23,20 @@ public class MyAccountPage {
 		return driver.findElement(By.className("logout"));
 	}
 
+	public WebElement getMyAddressesTab() {
+		return driver.findElement(By.linkText("MY ADDRESSES"));
+	}
+
 	public String myAccountHeadingText() {
 		return this.getMyAccountHeading().getText();
 	}
 	
 	public void signOutButtonClick() {
 		this.getSignOutButton().click();
+	}
+	
+	public void myAddressesTabClick() {
+		this.getMyAddressesTab().click();
 	}
 
 }

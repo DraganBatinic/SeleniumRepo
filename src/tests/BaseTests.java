@@ -13,6 +13,8 @@ import pages.AuthenticationPage;
 import pages.CreateAnAccountPage;
 import pages.MainPage;
 import pages.MyAccountPage;
+import pages.MyAddressesPage;
+import pages.YourAddressesPage;
 
 public class BaseTests {
 	WebDriver driver;
@@ -20,6 +22,8 @@ public class BaseTests {
 	AuthenticationPage authenticationPage;
 	CreateAnAccountPage createAnAccountPage;
 	MyAccountPage myAccountPage;
+	MyAddressesPage myAddressesPage;
+	YourAddressesPage yourAddressesPage;
 	ExcelReader excelReader;
 	String homeUrl;
 	
@@ -34,6 +38,8 @@ public class BaseTests {
 		authenticationPage = new AuthenticationPage(driver);
 		createAnAccountPage = new CreateAnAccountPage(driver);
 		myAccountPage = new MyAccountPage(driver);
+		myAddressesPage = new MyAddressesPage(driver);
+		yourAddressesPage = new YourAddressesPage(driver);
 		excelReader = new ExcelReader("data/ProjekatData.xlsx");
 		homeUrl = "http://automationpractice.com/";
 				
