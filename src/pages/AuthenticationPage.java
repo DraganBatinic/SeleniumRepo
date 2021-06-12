@@ -12,6 +12,10 @@ public class AuthenticationPage {
 	WebElement emailAddressField;
 	WebElement createAnAccountButton;
 	WebElement createAccountErrorMessage;
+	WebElement logInEmailAddressField;
+	WebElement logInPasswordField;
+	WebElement signInButton;
+	WebElement authenticatonErrorMessage;
 	WebDriverWait wdwait;
 	
 	public AuthenticationPage(WebDriver driver) {
@@ -36,6 +40,22 @@ public class AuthenticationPage {
 		return driver.findElement(By.id("create_account_error"));
 	}
 
+	public WebElement getLogInEmailAddressField() {
+		return driver.findElement(By.id("email"));
+	}
+
+	public WebElement getLogInPasswordField() {
+		return driver.findElement(By.id("passwd"));
+	}
+
+	public WebElement getSignInButton() {
+		return driver.findElement(By.id("SubmitLogin"));
+	}
+	
+	public WebElement getAuthenticatonErrorMessage() {
+		return driver.findElement(By.cssSelector(".alert.alert-danger"));
+	}
+
 	public String authenticationHeadingText() {
 		return this.getAuthenticationHeading().getText();
 	}
@@ -52,6 +72,26 @@ public class AuthenticationPage {
 		WebElement errorMessage = getCreateAccountErrorMessage();
 		Boolean textIsVisible = wdwait.until(ExpectedConditions.textToBePresentInElement(errorMessage, "Invalid email address."));
 		return this.getCreateAccountErrorMessage().getText();
+	}
+	
+	public void enterLogInEmail(String string) {
+		this.getLogInEmailAddressField().sendKeys(string);
+	}
+	
+	public void enterLogInPassword(String string) {
+		this.getLogInPasswordField().sendKeys(string);
+	}
+	
+	public void signInButtonClick() {
+		this.getSignInButton().click();
+	}
+	
+	public String signInButtonText() {
+		return this.getSignInButton().getText();
+	}
+	
+	public String authenticatonErrorMessageText() {		
+		return this.getAuthenticatonErrorMessage().getText();
 	}
 
 	

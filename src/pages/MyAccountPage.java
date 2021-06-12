@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 public class MyAccountPage {
 	WebDriver driver;
 	WebElement myAccountHeading;
+	WebElement signOutButton;
 	
 	public MyAccountPage(WebDriver driver) {
 		super();
@@ -16,9 +17,17 @@ public class MyAccountPage {
 	public WebElement getMyAccountHeading() {
 		return driver.findElement(By.className("page-heading"));
 	}
-	
+		
+	public WebElement getSignOutButton() {
+		return driver.findElement(By.className("logout"));
+	}
+
 	public String myAccountHeadingText() {
 		return this.getMyAccountHeading().getText();
+	}
+	
+	public void signOutButtonClick() {
+		this.getSignOutButton().click();
 	}
 
 }

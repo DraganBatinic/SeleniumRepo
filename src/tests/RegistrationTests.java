@@ -33,12 +33,9 @@ public class RegistrationTests extends BaseTests{
 	}
 	
 	@Test (priority = 3)
-	public void usingValidEmailForRegistration() throws InterruptedException {
-		this.signInButtonTest();		
-		String username = excelReader.getStringData("TCReg2", 8, 2);
-		authenticationPage.getEmailAddressField().clear();
-		authenticationPage.enterEmailAddress(username);
-		authenticationPage.createAnAccountButtonClick();		
+	public void usingValidEmailForRegistration() throws InterruptedException {				
+		String email = excelReader.getStringData("TCReg2", 8, 2);
+		registerFormFilling(email);
 				
 		String actualText = createAnAccountPage.createAnAccountHeadingText();
 		String textForAssertion = "CREATE AN ACCOUNT";
@@ -48,12 +45,9 @@ public class RegistrationTests extends BaseTests{
 	}
 	
 	@Test (priority = 6)
-	public void usingInvalidEmailForRegistration() throws InterruptedException {
-		this.signInButtonTest();		
-		String username = excelReader.getStringData("TCReg3", 8, 2);
-		authenticationPage.getEmailAddressField().clear();
-		authenticationPage.enterEmailAddress(username);
-		authenticationPage.createAnAccountButtonClick();			
+	public void usingInvalidEmailForRegistration() throws InterruptedException {				
+		String email = excelReader.getStringData("TCReg3", 8, 2);
+		registerFormFilling(email);			
 		
 		String actualText = authenticationPage.createAnAccountErrorMessageText();
 		String textForAssertion = "Invalid email address.";
@@ -75,6 +69,7 @@ public class RegistrationTests extends BaseTests{
 	@Test (priority = 9)
 	public void registrationWithValidEmail() throws InterruptedException {
 		this.usingValidEmailForRegistration();
+		
 		createAnAccountPage.titleMrRadioButtonClick();
 		
 		String firstName = excelReader.getStringData("TCReg4", 9, 2);
@@ -152,16 +147,22 @@ public class RegistrationTests extends BaseTests{
 	
 	@Test (priority = 12)
 	public void registartionWithAlreadyUsedEmail() {
-		this.signInButtonTest();		
-		String username = excelReader.getStringData("TCReg5", 9, 2);
-		authenticationPage.getEmailAddressField().clear();
-		authenticationPage.enterEmailAddress(username);
-		authenticationPage.createAnAccountButtonClick();			
+				
+		String email = excelReader.getStringData("TCReg5", 9, 2);
+		registerFormFilling(email);			
 		
 		String actualText = authenticationPage.createAnAccountErrorMessageText();
 		String textForAssertion = "Invalid email address.";
 		
 		assertEquals(actualText, textForAssertion);
+				
+	}
+	
+	public void registerFormFilling(String email) {
+		this.signInButtonTest();		
+		authenticationPage.getEmailAddressField().clear();
+		authenticationPage.enterEmailAddress(email);
+		authenticationPage.createAnAccountButtonClick();
 	}
 	
 	@AfterMethod 
