@@ -146,10 +146,22 @@ public class RegistrationTests extends BaseTests{
 		String actualText = myAccountPage.myAccountHeadingText();
 		String textForAssertion = "MY ACCOUNT";
 		
+		assertEquals(actualText, textForAssertion);		
+		
+	}
+	
+	@Test (priority = 12)
+	public void registartionWithAlreadyUsedEmail() {
+		this.signInButtonTest();		
+		String username = excelReader.getStringData("TCReg5", 9, 2);
+		authenticationPage.getEmailAddressField().clear();
+		authenticationPage.enterEmailAddress(username);
+		authenticationPage.createAnAccountButtonClick();			
+		
+		String actualText = authenticationPage.createAnAccountErrorMessageText();
+		String textForAssertion = "Invalid email address.";
+		
 		assertEquals(actualText, textForAssertion);
-		
-		
-		
 	}
 	
 	@AfterMethod 
