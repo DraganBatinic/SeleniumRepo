@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 public class MainPage {
 	WebDriver driver;
 	WebElement signInButton;
+	WebElement userAccountButton;
 	
 	public MainPage(WebDriver driver) {
 		super();
@@ -17,8 +18,16 @@ public class MainPage {
 		return driver.findElement(By.className("login"));
 	}
 	
+	public WebElement getUserAccountButton() {
+		return driver.findElement(By.className("header_user_info"));
+	}
+
 	public void signInButtonClick() {
 		this.getSignInButton().click();
+	}
+	
+	public void userAccountButonClick() {
+		this.getUserAccountButton().click();
 	}
 	
 	

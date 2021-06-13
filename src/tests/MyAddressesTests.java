@@ -27,7 +27,8 @@ public class MyAddressesTests extends BaseTests{
 	}
 	
 	@Test (priority = 0)
-	public void updateUsersAddress() {		
+	public void updateUsersAddress() {
+		String actualAddress1 = yourAddressesPage.getAddress1Text();
 		yourAddressesPage.getAddress1().clear();
 		String address1 = excelReader.getStringData("TCMA1", 13, 2);
 		yourAddressesPage.enterAddress1(address1);
@@ -37,12 +38,24 @@ public class MyAddressesTests extends BaseTests{
 		String updatedAddress = myAddressesPage.getAddress1Text();
 		String addressToAssert = "Meseceva 10";
 		
-		assertEquals(updatedAddress, addressToAssert);		
+		assertEquals(updatedAddress, addressToAssert);
+		
+		//clean up update
+		myAddressesPage.updateButtonClick();
+		yourAddressesPage.getAddress1().clear();		
+		yourAddressesPage.enterAddress1(actualAddress1);
+		
+		yourAddressesPage.saveButtonClick();
+		
+		String defaultAddress = myAddressesPage.getAddress1Text();
+		addressToAssert = actualAddress1;
+		
+		assertEquals(defaultAddress, addressToAssert);
 		
 	}
 	
 	@Test (priority = 3)
-	public void addUsersAddress() {		
+	public void addUsersAddress() {			
 		yourAddressesPage.getAddress2().clear();
 		String address2 = excelReader.getStringData("TCMA2", 12, 2);
 		yourAddressesPage.enterAddress2(address2);
@@ -65,10 +78,9 @@ public class MyAddressesTests extends BaseTests{
 		String updatedAddress = myAddressesPage.getAddress2Text();
 		String addressToAssert = "";
 		
-		assertEquals(updatedAddress, addressToAssert);		
+		assertEquals(updatedAddress, addressToAssert);	
 		
-	}
-	
+	}	
 	
 	@AfterMethod 
 	public void afterEveryTest() {		

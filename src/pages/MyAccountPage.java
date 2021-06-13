@@ -9,6 +9,7 @@ public class MyAccountPage {
 	WebElement myAccountHeading;
 	WebElement signOutButton;
 	WebElement myAddressesTab;
+	WebElement myPersonalInformationTab;
 	
 	public MyAccountPage(WebDriver driver) {
 		super();
@@ -27,6 +28,10 @@ public class MyAccountPage {
 		return driver.findElement(By.linkText("MY ADDRESSES"));
 	}
 
+	public WebElement getMyPersonalInformationTab() {
+		return driver.findElement(By.linkText("MY PERSONAL INFORMATION"));
+	}
+
 	public String myAccountHeadingText() {
 		return this.getMyAccountHeading().getText();
 	}
@@ -37,6 +42,10 @@ public class MyAccountPage {
 	
 	public void myAddressesTabClick() {
 		this.getMyAddressesTab().click();
+	}
+	
+	public void myPersonalInformationTabClick() {
+		this.getMyPersonalInformationTab().click();
 	}
 
 }

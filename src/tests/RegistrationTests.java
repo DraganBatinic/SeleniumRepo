@@ -119,7 +119,7 @@ public class RegistrationTests extends BaseTests{
 		createAnAccountPage.enterCity(city);
 		
 		createAnAccountPage.stateDropdownMenuClick();
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 22; i++) {
 			createAnAccountPage.getStateDropdownMenu().sendKeys(Keys.ARROW_DOWN);
 		}
 		createAnAccountPage.getStateDropdownMenu().sendKeys(Keys.ENTER);
