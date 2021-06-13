@@ -14,10 +14,7 @@ public class MyAddressesTests extends BaseTests{
 	public void beforeEveryTest() {
 		driver.navigate().to(homeUrl);
 		driver.manage().window().maximize();
-	}
-	
-	@Test (priority = 0)
-	public void updateUsersAddress() {
+		
 		mainPage.signInButtonClick();
 		String email = excelReader.getStringData("TCLogIn2", 10, 2);		
 		String password = excelReader.getStringData("TCLogIn2", 12, 3);		
@@ -27,7 +24,10 @@ public class MyAddressesTests extends BaseTests{
 		
 		myAccountPage.myAddressesTabClick();
 		myAddressesPage.updateButtonClick();
-		
+	}
+	
+	@Test (priority = 0)
+	public void updateUsersAddress() {		
 		yourAddressesPage.getAddress1().clear();
 		String address1 = excelReader.getStringData("TCMA1", 13, 2);
 		yourAddressesPage.enterAddress1(address1);
@@ -40,6 +40,35 @@ public class MyAddressesTests extends BaseTests{
 		assertEquals(updatedAddress, addressToAssert);		
 		
 	}
+	
+	@Test (priority = 3)
+	public void addUsersAddress() {		
+		yourAddressesPage.getAddress2().clear();
+		String address2 = excelReader.getStringData("TCMA2", 12, 2);
+		yourAddressesPage.enterAddress2(address2);
+		
+		yourAddressesPage.saveButtonClick();
+		
+		String updatedAddress = myAddressesPage.getAddress2Text();
+		String addressToAssert = "Vetrova 22";
+		
+		assertEquals(updatedAddress, addressToAssert);		
+		
+	}
+	
+	@Test (priority = 6)
+	public void removeUsersAddress() {		
+		yourAddressesPage.getAddress2().clear();		
+		
+		yourAddressesPage.saveButtonClick();
+		
+		String updatedAddress = myAddressesPage.getAddress2Text();
+		String addressToAssert = "";
+		
+		assertEquals(updatedAddress, addressToAssert);		
+		
+	}
+	
 	
 	@AfterMethod 
 	public void afterEveryTest() {		

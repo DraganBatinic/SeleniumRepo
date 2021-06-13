@@ -9,6 +9,7 @@ public class MyAddressesPage {
 	WebElement updateButton;
 	WebElement address1;
 	WebElement address2;
+	WebElement addNewAddressButton;
 	
 	public MyAddressesPage(WebDriver driver) {
 		super();
@@ -27,6 +28,10 @@ public class MyAddressesPage {
 		return driver.findElement(By.className("address_address2"));
 	}
 
+	public WebElement getAddNewAddressButton() {
+		return driver.findElement(By.linkText("Add a new address"));
+	}
+
 	public void updateButtonClick() {
 		this.getUpdateButton().click();
 	}
@@ -37,6 +42,10 @@ public class MyAddressesPage {
 	
 	public String getAddress2Text() {
 		return this.getAddress2().getText();
+	}
+	
+	public void addNewAddressButtonClick() {
+		this.getAddNewAddressButton().click();
 	}
 	
 	
