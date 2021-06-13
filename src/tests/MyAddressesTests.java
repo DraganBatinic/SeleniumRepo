@@ -36,7 +36,7 @@ public class MyAddressesTests extends BaseTests{
 		yourAddressesPage.saveButtonClick();
 		
 		String updatedAddress = myAddressesPage.getAddress1Text();
-		String addressToAssert = "Meseceva 10";
+		String addressToAssert = address1;
 		
 		assertEquals(updatedAddress, addressToAssert);
 		
@@ -63,7 +63,7 @@ public class MyAddressesTests extends BaseTests{
 		yourAddressesPage.saveButtonClick();
 		
 		String updatedAddress = myAddressesPage.getAddress2Text();
-		String addressToAssert = "Vetrova 22";
+		String addressToAssert = address2;
 		
 		assertEquals(updatedAddress, addressToAssert);		
 		
