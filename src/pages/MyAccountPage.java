@@ -11,6 +11,7 @@ public class MyAccountPage {
 	WebElement myAddressesTab;
 	WebElement myPersonalInformationTab;
 	WebElement myWishListTab;
+	WebElement returnToHomeButton;
 	
 	public MyAccountPage(WebDriver driver) {
 		super();
@@ -37,6 +38,10 @@ public class MyAccountPage {
 		return driver.findElement(By.linkText("MY WISHLISTS"));
 	}
 
+	public WebElement getReturnToHomeButton() {
+		return driver.findElement(By.className("home"));
+	}
+
 	public String myAccountHeadingText() {
 		return this.getMyAccountHeading().getText();
 	}
@@ -55,6 +60,10 @@ public class MyAccountPage {
 	
 	public void myWishListTabClick() {
 		this.getMyWishListTab().click();
+	}
+	
+	public void returnToHomeButtonClick() {
+		this.getReturnToHomeButton().click();
 	}
 
 }

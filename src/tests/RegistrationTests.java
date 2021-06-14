@@ -35,7 +35,7 @@ public class RegistrationTests extends BaseTests{
 	@Test (priority = 3)
 	public void usingValidEmailForRegistration() throws InterruptedException {				
 		String email = excelReader.getStringData("TCReg2", 8, 2);
-		registerFormFilling(email);
+		this.registerFormFilling(email);
 				
 		String actualText = createAnAccountPage.createAnAccountHeadingText();
 		String textForAssertion = "CREATE AN ACCOUNT";
@@ -47,7 +47,7 @@ public class RegistrationTests extends BaseTests{
 	@Test (priority = 6)
 	public void usingInvalidEmailForRegistration() throws InterruptedException {				
 		String email = excelReader.getStringData("TCReg3", 8, 2);
-		registerFormFilling(email);			
+		this.registerFormFilling(email);			
 		
 		String actualText = authenticationPage.createAnAccountErrorMessageText();
 		String textForAssertion = "Invalid email address.";
@@ -149,7 +149,7 @@ public class RegistrationTests extends BaseTests{
 	public void registartionWithAlreadyUsedEmail() {
 				
 		String email = excelReader.getStringData("TCReg5", 9, 2);
-		registerFormFilling(email);			
+		this.registerFormFilling(email);			
 		
 		String actualText = authenticationPage.createAnAccountErrorMessageText();
 		String textForAssertion = "Invalid email address.";

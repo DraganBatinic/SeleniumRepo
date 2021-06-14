@@ -32,7 +32,7 @@ public class MyWishlistTests extends BaseTests{
 	@Test (priority = 0)
 	public void addOneWishlist() {
 		String name = excelReader.getStringData("TCMA5", 11, 2);
-		addWishlistProcedure(name);	
+		this.addWishlistProcedure(name);	
 		String actualWishlistName = myWishlistPage.wishlistTableNameText();
 		String wishlistNameForAssertion = name;
 		
@@ -63,28 +63,28 @@ public class MyWishlistTests extends BaseTests{
 	@Test (priority = 6)
 	public void addFourWishLists() {
 		String name = excelReader.getStringData("TCMA6", 11, 2);
-		addWishlistProcedure(name);	
+		this.addWishlistProcedure(name);	
 		String actualWishlistName = myWishlistPage.wishlistTableNameText();
 		String wishlistNameForAssertion = name;
 		
 		assertEquals(actualWishlistName, wishlistNameForAssertion);
 		
 		name = excelReader.getStringData("TCMA6", 15, 2);
-		addWishlistProcedure(name);	
+		this.addWishlistProcedure(name);	
 		actualWishlistName = myWishlistPage.wishlistTableName2Text();
 		wishlistNameForAssertion = name;
 		
 		assertEquals(actualWishlistName, wishlistNameForAssertion);
 		
 		name = excelReader.getStringData("TCMA6", 19, 2);
-		addWishlistProcedure(name);	
+		this.addWishlistProcedure(name);	
 		actualWishlistName = myWishlistPage.wishlistTableName3Text();
 		wishlistNameForAssertion = name;
 		
 		assertEquals(actualWishlistName, wishlistNameForAssertion);
 		
 		name = excelReader.getStringData("TCMA6", 23, 2);
-		addWishlistProcedure(name);	
+		this.addWishlistProcedure(name);	
 		actualWishlistName = myWishlistPage.wishlistTableName4Text();
 		wishlistNameForAssertion = name;
 		

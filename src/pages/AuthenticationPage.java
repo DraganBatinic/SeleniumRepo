@@ -93,6 +93,10 @@ public class AuthenticationPage {
 	public String authenticatonErrorMessageText() {		
 		return this.getAuthenticatonErrorMessage().getText();
 	}
+	
+	public String createAnAccountButtonText() {
+		return this.getCreateAnAccountButton().getText();
+	}
 
 	
 	

@@ -3,6 +3,7 @@ package tests;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +16,8 @@ import pages.MainPage;
 import pages.MyAccountPage;
 import pages.MyAddressesPage;
 import pages.MyWishlistPage;
+import pages.ShoppingAddressesPage;
+import pages.ShoppingCartSummaryPage;
 import pages.YourAddressesPage;
 import pages.YourPersonalInformationPage;
 
@@ -28,7 +31,10 @@ public class BaseTests {
 	YourAddressesPage yourAddressesPage;
 	YourPersonalInformationPage yourPersonalInformationPage;
 	MyWishlistPage myWishlistPage;
+	ShoppingCartSummaryPage shoppingCartSummaryPage;
+	ShoppingAddressesPage shoppingAddressesPage;
 	ExcelReader excelReader;
+	JavascriptExecutor js;
 	String homeUrl;
 	
 	
@@ -46,6 +52,9 @@ public class BaseTests {
 		yourAddressesPage = new YourAddressesPage(driver);
 		yourPersonalInformationPage = new YourPersonalInformationPage(driver);
 		myWishlistPage = new MyWishlistPage(driver);
+		shoppingCartSummaryPage = new ShoppingCartSummaryPage(driver);
+		shoppingAddressesPage = new ShoppingAddressesPage(driver);
+		js = (JavascriptExecutor) driver;
 		excelReader = new ExcelReader("data/ProjekatData.xlsx");
 		homeUrl = "http://automationpractice.com/";
 				

@@ -20,7 +20,7 @@ public class LogInTests extends BaseTests{
 		
 		String email = excelReader.getStringData("TCLogIn1", 10, 2);		
 		String password = excelReader.getStringData("TCLogIn1", 12, 2);
-		logInFormFilling(email, password);
+		this.logInFormFilling(email, password);
 		
 		String actualText = myAccountPage.myAccountHeadingText();
 		String textForAssertion = "MY ACCOUNT";
@@ -34,7 +34,7 @@ public class LogInTests extends BaseTests{
 		for (int i = 2; i <=3; i++) {
 			String email = excelReader.getStringData("TCLogIn2", 10, i);		
 			String password = excelReader.getStringData("TCLogIn2", 12, i);
-			logInFormFilling(email, password);
+			this.logInFormFilling(email, password);
 			
 			String actualText = authenticationPage.signInButtonText();		
 			String textForAssertion = "Sign in";
